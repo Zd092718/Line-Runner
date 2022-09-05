@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject player;
 
+    private int lives = 2;
+
     private void Awake()
     {
         instance = this;
@@ -29,5 +31,19 @@ public class GameManager : MonoBehaviour
     public void ReloadLevel()
     {
         SceneManager.LoadScene("Game");
+    }
+
+    public void UpdateLives()
+    {
+        if(lives <= 0)
+        {
+            GameOver();
+        } else
+        {
+            lives--;
+            print("lives : " + lives);
+        }
+
+
     }
 }
