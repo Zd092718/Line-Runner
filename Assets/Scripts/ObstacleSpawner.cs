@@ -19,7 +19,7 @@ public class ObstacleSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator SpawnObstacles()
@@ -28,6 +28,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             Spawn();
 
+            GameManager.instance.UpdateScore();
             yield return new WaitForSeconds(spawnRate);
         }
     }
@@ -38,17 +39,18 @@ public class ObstacleSpawner : MonoBehaviour
 
         int randomSpot = Random.Range(0, 2); // 0 = top, 1 = bottom
 
-        if(randomSpot < 1)
+        if (randomSpot < 1)
         {
             //spawn at top
             Instantiate(obstacles[randObstacle], spawnPos, transform.rotation);
-        } else
+        }
+        else
         {
             //spawn at bottom
             Vector3 botSpawnPos = new Vector3(spawnPos.x, -spawnPos.y, spawnPos.z);
             Instantiate(obstacles[randObstacle], botSpawnPos, transform.rotation);
         }
 
-        
+
     }
 }
