@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameUIScreen;
     [SerializeField] private GameObject mainMenuScreen;
     [SerializeField] private GameObject obstacleSpawner;
+    [SerializeField] private GameObject bgParticles;
 
 
     private int lives = 2;
@@ -38,6 +39,7 @@ public class GameManager : MonoBehaviour
         mainMenuScreen.SetActive(false);
         gameUIScreen.SetActive(true);
         obstacleSpawner.SetActive(true);
+        bgParticles.SetActive(true);
     }
 
     public void GameOver()
