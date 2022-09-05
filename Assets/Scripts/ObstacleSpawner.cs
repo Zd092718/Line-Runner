@@ -36,6 +36,19 @@ public class ObstacleSpawner : MonoBehaviour
     {
         int randObstacle = Random.Range(0, obstacles.Length);
 
-        Instantiate(obstacles[randObstacle], spawnPos, transform.rotation);
+        int randomSpot = Random.Range(0, 2); // 0 = top, 1 = bottom
+
+        if(randomSpot < 1)
+        {
+            //spawn at top
+            Instantiate(obstacles[randObstacle], spawnPos, transform.rotation);
+        } else
+        {
+            //spawn at bottom
+            Vector3 botSpawnPos = new Vector3(spawnPos.x, -spawnPos.y, spawnPos.z);
+            Instantiate(obstacles[randObstacle], botSpawnPos, transform.rotation);
+        }
+
+        
     }
 }

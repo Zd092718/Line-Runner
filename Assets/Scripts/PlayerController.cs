@@ -22,4 +22,12 @@ public class PlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, playerYPos, transform.position.z);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Obstacles")
+        {
+            GameManager.instance.GameOver();
+        }
+    }
 }
