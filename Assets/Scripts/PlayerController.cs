@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    [SerializeField] private GameObject particles;
     private float playerYPos;
 
     void Start()
@@ -16,6 +16,12 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.instance.gameStarted)
         {
+            if (!particles.activeInHierarchy)
+            {
+
+                particles.SetActive(true);
+            }
+
             if (Input.GetMouseButtonDown(0))
             {
                 PositionSwitch();
@@ -33,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Obstacles")
+        if (collision.gameObject.tag == "Obstacles")
         {
             GameManager.instance.UpdateLives();
         }
