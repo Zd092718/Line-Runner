@@ -10,8 +10,11 @@ public class GameManager : MonoBehaviour
     public bool gameStarted = false;
 
     [SerializeField] private GameObject player;
-    [SerializeField] TMP_Text scoreText;
-    [SerializeField] TMP_Text livesText;
+    [SerializeField] private TMP_Text scoreText;
+    [SerializeField] private TMP_Text livesText;
+    [SerializeField] private GameObject gameUIScreen;
+    [SerializeField] private GameObject mainMenuScreen;
+    [SerializeField] private GameObject obstacleSpawner;
 
 
     private int lives = 2;
@@ -31,6 +34,10 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         gameStarted = true;
+
+        mainMenuScreen.SetActive(false);
+        gameUIScreen.SetActive(true);
+        obstacleSpawner.SetActive(true);
     }
 
     public void GameOver()
@@ -43,6 +50,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Game");
     }
+
 
     public void UpdateLives()
     {
@@ -62,4 +70,9 @@ public class GameManager : MonoBehaviour
         score++;
         print("Score : " + score);
     }
- }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+}

@@ -14,13 +14,21 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (GameManager.instance.gameStarted)
         {
-            //position switch
-            playerYPos = -playerYPos;
-
-            transform.position = new Vector3(transform.position.x, playerYPos, transform.position.z);
+            if (Input.GetMouseButtonDown(0))
+            {
+                PositionSwitch();
+            }
         }
+    }
+
+    private void PositionSwitch()
+    {
+        //position switch
+        playerYPos = -playerYPos;
+
+        transform.position = new Vector3(transform.position.x, playerYPos, transform.position.z);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
